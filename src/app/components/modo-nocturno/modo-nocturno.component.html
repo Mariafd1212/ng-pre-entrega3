@@ -1,0 +1,12 @@
+<h2
+  [ngStyle]="{
+    backgroundColor: enabled === true ? 'black' : 'purple',
+    color: enabled === true ? 'white' : 'black'
+  }"
+>
+  {{ Dark }}
+</h2>
+
+<button appRoundedBlockDirectiveTs (click)="toggleMode()">
+  {{ enabled ? "Modo Normal" : "Modo Oscuro" }}
+</button>
