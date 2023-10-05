@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -11,12 +11,12 @@ export class ReactiveFormsComponent {
 
   constructor(private formBuilder: FormBuilder) {
     this.userForm = this.formBuilder.group({
-      email: ['email@gmail.com'], // Usa un array en lugar de formBuilder.control
-      password: ['1234'], // Usa un array en lugar de formBuilder.control
+      email: ['email@gmail.com', Validators.required],
+      password: ['1234', Validators.required],
     });
   }
 
   onSubmit(): void {
-    console.log(this.userForm.value); // Corrige el error de sintaxis aquí
+    console.log(this.userForm.value);
   }
 }
