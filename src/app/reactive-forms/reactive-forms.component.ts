@@ -11,10 +11,12 @@ export class ReactiveFormsComponent {
 
   constructor(private formBuilder: FormBuilder) {
     this.userForm = this.formBuilder.group({
-      email: this.formBuilder.control('email@gmail.com'),
-      password: this.formBuilder.control('1234'),
+      email: ['email@gmail.com'], // Usa un array en lugar de formBuilder.control
+      password: ['1234'], // Usa un array en lugar de formBuilder.control
     });
+  }
 
-    this.userForm.value;
+  onSubmit(): void {
+    console.log(this.userForm.value); // Corrige el error de sintaxis aquí
   }
 }
