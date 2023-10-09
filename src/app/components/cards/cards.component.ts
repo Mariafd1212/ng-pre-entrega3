@@ -7,14 +7,25 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class CardsComponent {
   @Input()
-  title = '';
+  title: string = '';
 
   @Input()
   btn = 'Agendar clase';
 
   @Input()
-  imgSrc = 'Courses';
+  imgSrc: string = 'Courses';
 
   @Output()
   clickEv = new EventEmitter();
+  @Output() clickEv2: EventEmitter<void> = new EventEmitter<void>();
+
+  isHovered: boolean = false;
+
+  onMouseEnter(): void {
+    this.isHovered = true;
+  }
+
+  onMouseLeave(): void {
+    this.isHovered = false;
+  }
 }

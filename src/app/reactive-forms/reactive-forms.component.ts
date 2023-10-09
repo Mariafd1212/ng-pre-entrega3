@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -11,12 +17,27 @@ export class ReactiveFormsComponent {
 
   constructor(private formBuilder: FormBuilder) {
     this.userForm = this.formBuilder.group({
-      email: ['email@gmail.com', Validators.required],
-      password: ['1234', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength]],
     });
   }
 
+  get emailControl() {
+    return this.userForm.controls['email'];
+  }
+
+  get emailControlIsInvalid() {
+    return this.emailControl.invalid && this.emailControl.touched;
+  }
+
   onSubmit(): void {
-    console.log(this.userForm.value);
+    console.log(this.userForm.controls['email'].value);
+
+    if (this.userForm.invalid) {
+      alert('Completa todos los campos del formulario');
+    } else if (this.userForm.valid) {
+      console.log(this.userForm.value);
+      alert('Formulario enviado!');
+    }
   }
 }

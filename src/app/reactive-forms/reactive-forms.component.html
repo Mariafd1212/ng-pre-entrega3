@@ -1,36 +1,74 @@
-<h1>Formulario de información</h1>
+<h1 class="titleform">Formulario de información</h1>
 
-<form [formGroup]="userForm">
+<form
+  [formGroup]="userForm"
+  class="d-flex flex-column align-items-center justify-content-center"
+>
   <!-- Email control -->
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input
-      formControlName="email"
-      type="email"
-      class="form-control"
-      id="exampleInputEmail1"
-      aria-describedby="emailHelp"
-    />
-    <div id="emailHelp" class="form-text">
-      We'll never share your email with anyone else.
+  <label for="exampleInputEmail1" class="form-label">Email address</label>
+  <input
+    style="width: 190px"
+    formControlName="email"
+    type="text"
+    class="form-control"
+    [ngClass]="{
+      'is-invalid': emailControlIsInvalid
+    }"
+    value="email@example.com"
+  />
+  <div class="invalid-feedback">
+    El correo es inválido
+    <div *ngIf="emailControl.errors">
+      <div *ngSwitchCase="emailControl.errors?.['required']">
+        Este campo es requerido
+      </div>
+      <div *ngSwitchCase="emailControl.errors?.['email']">
+        El valor ingresado no es válido
+        <div *ngSwitchDefault="">Error desconocido</div>
+      </div>
     </div>
+    <div id="emailHelp" class="form-text">Ingrese su correo electrónico.</div>
   </div>
+  <!-- Cierra la etiqueta de div que contiene el control de correo electrónico -->
 
   <!-- Password control -->
-  <div class="mb-3">
+  <div>
     <label for="exampleInputPassword1" class="form-label">Password</label>
     <input
+      style="width: 190px"
       formControlName="password"
       type="password"
       class="form-control"
+      [ngClass]="{
+        'is-invalid':
+          userForm.controls['password'].invalid &&
+          userForm.controls['password'].touched
+      }"
       id="exampleInputPassword1"
+      aria-describedby="passwordHelp"
     />
+    <div>Ingrese su contraseña</div>
+    <div class="invalid-feedback">La contraseña es inválida</div>
   </div>
-  <div class="mb-3 form-check">
+
+  <div>
     <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    <label class="form-check-label" for="exampleCheck1"
+      >Me quiero suscribir</label
+    >
   </div>
-  <button (click)="onSubmit()" class="btn btn-primary" type="submit">
+  <button
+    [disabled]="userForm.invalid"
+    (click)="onSubmit()"
+    class="btn btn-primary"
+    type="submit"
+  >
     Enviar
   </button>
 </form>
+
+<h1>Errores de email control</h1>
+<pre>{{ emailControl.errors | json }}</pre>
+
+<hr />
+<pre>{{ userForm.value | json }}</pre>

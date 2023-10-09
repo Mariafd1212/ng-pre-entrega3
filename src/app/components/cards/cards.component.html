@@ -7,10 +7,13 @@
       the card's content.
     </p>
     <button
-      (click)="clickEv.emit()"
+      (click)="clickEv2.emit()"
       *ngIf="btn.length"
       href="#"
       class="btn btn-primary"
+      (mouseenter)="onMouseEnter()"
+      (mouseleave)="onMouseLeave()"
+      [ngClass]="{ hovered: isHovered }"
     >
       {{ btn }}
     </button>
