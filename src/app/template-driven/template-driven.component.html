@@ -1,1 +1,35 @@
-<p>template-driven works!</p>
+<h1 class="titleform">Template driven</h1>
+
+<form class="d-flex flex-column align-items-center justify-content-center">
+  <!-- Email control -->
+  <label for="exampleInputEmail1" class="form-label">Email address</label>
+  <input
+    style="width: 190px"
+    formControlName="email"
+    type="text"
+    class="form-control"
+    value="email@example.com"
+  />
+
+  <!-- Password control -->
+  <div>
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input
+      style="width: 190px"
+      formControlName="password"
+      type="password"
+      class="form-control"
+      id="exampleInputPassword1"
+      aria-describedby="passwordHelp"
+    />
+    <div>Ingrese su contraseña</div>
+  </div>
+
+  <div>
+    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+    <label class="form-check-label" for="exampleCheck1"
+      >Me quiero suscribir</label
+    >
+  </div>
+  <button class="btn btn-primary" type="submit">Enviar</button>
+</form>

@@ -1,0 +1,22 @@
+li {
+  list-style: none;
+}
+
+li:hover {
+  background: magenta;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+aside {
+  font-size: 1.5rem;
+  justify-content: space-between;
+  overflow: hidden;
+  background-color: black;
+  height: 150vh;
+  width: 300px;
+  position: fixed;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 32px;
+}
