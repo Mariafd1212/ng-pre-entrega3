@@ -1,10 +1,21 @@
 <button mat-button appRoundedBlockDirectiveTs (click)="toggleAlumnos()">
   Mostrar alumnos
 </button>
-<ul mat-table appRoundedBlockDirectiveTs [appToggleList]="mostrarAlumnos">
-  <li *ngFor="let alumno of alumnos">
-    {{ alumno.nombre | uppercase }} - {{ alumno.edad }} -
-    {{ alumno.fechaInscripcion | date }}- {{ alumno.curso | uppercase }} -
-    {{ alumno.nivel }}
-  </li>
-</ul>
+
+<div *ngIf="mostrarAlumnos">
+  <ul mat-table>
+    <li
+      *ngFor="let alumno of alumnos"
+      [ngClass]="{
+        regular: esRegularAlumno(alumno),
+        'no-regular': !esRegularAlumno(alumno)
+      }"
+      class="hover-effect"
+      (click)="clickEv2.emit()"
+    >
+      {{ alumno.nombre | uppercase }} - {{ alumno.edad }} -
+      {{ alumno.fechaInscripcion | date }}- {{ alumno.curso | uppercase }} -
+      {{ alumno.nivel }}
+    </li>
+  </ul>
+</div>

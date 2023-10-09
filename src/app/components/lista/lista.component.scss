@@ -1,21 +1,37 @@
-h1 {
+* {
   margin: 0;
   padding: 0;
-  min-height: 160vh; /* Asegura que el cuerpo ocupe al menos el 100% del alto de la ventana */
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  margin-bottom: 60px;
-  .regular {
-    /* Estilos para alumnos regulares */
-    color: green;
-  }
-
-  .no-regular {
-    /* Estilos para alumnos no regulares */
-    color: red;
-  }
 }
+button {
+  min-height: 8vh;
+  display: flex;
+  margin-bottom: 60px;
+  align-items: center;
+  justify-content: center;
+}
+ul {
+  margin: 70px;
+  padding: 50px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+li:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
 table {
-  width: 100%;
+  margin: 0 auto;
+}
+.regular {
+  /* Estilos para alumnos regulares */
+  background-color: green;
+}
+
+.no-regular {
+  /* Estilos para alumnos no regulares */
+  background-color: rgb(102, 6, 6);
 }

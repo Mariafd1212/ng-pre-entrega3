@@ -1,68 +1,98 @@
-<h1 class="titleform">Formulario de información</h1>
+<h1 appRoundedBlockDirectiveTs class="titleform mb-2 mt-5">
+  Formulario de Registro
+</h1>
 
-<form
-  [formGroup]="userForm"
-  class="d-flex flex-column align-items-center justify-content-center"
->
-  <!-- Email control -->
-  <label for="exampleInputEmail1" class="form-label">Correo electrónico</label>
-  <input
-    style="width: 190px"
-    formControlName="email"
-    type="text"
-    class="form-control"
-    [ngClass]="{
-      'is-invalid': emailControlIsInvalid
-    }"
-    value="email@example.com"
-  />
-  <div class="invalid-feedback">
-    El correo es inválido
-    <div *ngIf="emailControl.errors">
-      <div *ngSwitchCase="emailControl.errors?.['required']">
-        Este campo es requerido
-      </div>
-      <div *ngSwitchCase="emailControl.errors?.['email']">
-        El valor ingresado no es válido
-        <div *ngSwitchDefault="">Error desconocido</div>
-      </div>
-    </div>
-    <div id="emailHelp" class="form-text">Ingrese su correo electrónico.</div>
-  </div>
-  <!-- Cierra la etiqueta de div que contiene el control de correo electrónico -->
-
-  <!-- Password control -->
-  <div>
-    <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+<div class="form-container">
+  <form
+    appRoundedBlockDirectiveTs
+    [formGroup]="userForm"
+    class="d-flex flex-column align-items-center justify-content-center"
+  >
+    <!-- Email control -->
+    <label for="exampleInputEmail1" class="form-label"
+      >Correo electrónico</label
+    >
     <input
       style="width: 190px"
-      formControlName="password"
-      type="password"
+      formControlName="email"
+      type="text"
       class="form-control"
       [ngClass]="{
-        'is-invalid':
-          userForm.controls['password'].invalid &&
-          userForm.controls['password'].touched
+        'is-invalid': emailControlIsInvalid
       }"
-      id="exampleInputPassword1"
-      aria-describedby="passwordHelp"
+      value="email@example.com"
     />
-    <div>Ingrese su contraseña</div>
-    <div class="invalid-feedback">La contraseña es inválida</div>
-  </div>
+    <div class="invalid-feedback">
+      El correo es inválido
+      <div *ngIf="emailControl.errors">
+        <div *ngSwitchCase="emailControl.errors?.['required']">
+          Este campo es requerido
+        </div>
+        <div *ngSwitchCase="emailControl.errors?.['email']">
+          El valor ingresado no es válido
+          <div *ngSwitchDefault="">Error desconocido</div>
+        </div>
+      </div>
+      <div id="emailHelp" class="form-text">Ingrese su correo electrónico.</div>
+    </div>
 
-  <div>
-    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-    <label class="form-check-label" for="exampleCheck1"
-      >Me quiero suscribir</label
+    <!-- Password control -->
+    <div>
+      <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+      <input
+        style="width: 190px"
+        formControlName="password"
+        type="password"
+        class="form-control"
+        [ngClass]="{
+          'is-invalid':
+            userForm.controls['password'].invalid &&
+            userForm.controls['password'].touched
+        }"
+        id="exampleInputPassword1"
+        aria-describedby="passwordHelp"
+      />
+      <div>Ingrese su contraseña</div>
+      <div class="invalid-feedback">La contraseña es inválida</div>
+    </div>
+    <!-- Edad-->
+    <label for="exampleInputAge" class="form-label">Edad</label>
+    <input
+      style="width: 190px"
+      formControlName="age"
+      type="text"
+      class="form-control"
+      [ngClass]="{
+        'is-invalid': ageControlIsInvalid
+      }"
+      value="25 años"
+    />
+    <div class="invalid-feedback">
+      El valor ingresado es inválido
+      <div *ngIf="ageControl.errors">
+        <div *ngSwitchCase="ageControl.errors?.['required']">
+          Este campo es requerido
+        </div>
+        <div *ngSwitchCase="ageControl.errors?.['age']">
+          El valor ingresado no es válido
+          <div *ngSwitchDefault="">Error desconocido</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+      <label class="form-check-label" for="exampleCheck1"
+        >Me quiero suscribir</label
+      >
+    </div>
+    <button
+      [disabled]="userForm.invalid"
+      (click)="onSubmit()"
+      class="btn btn-primary"
+      type="submit"
     >
-  </div>
-  <button
-    [disabled]="userForm.invalid"
-    (click)="onSubmit()"
-    class="btn btn-primary"
-    type="submit"
-  >
-    Enviar
-  </button>
-</form>
+      Enviar
+    </button>
+  </form>
+</div>

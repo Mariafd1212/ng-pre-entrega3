@@ -13,6 +13,7 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
 import { TemplateDrivenComponent } from './template-driven/template-driven.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

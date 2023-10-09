@@ -19,6 +19,7 @@ export class ReactiveFormsComponent {
     this.userForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength]],
+      age: ['', [Validators.required, Validators.minLength]],
     });
   }
 
@@ -30,8 +31,18 @@ export class ReactiveFormsComponent {
     return this.emailControl.invalid && this.emailControl.touched;
   }
 
+  get ageControl() {
+    return this.userForm.controls['age'];
+  }
+
+  get ageControlIsInvalid() {
+    return this.ageControl.invalid && this.ageControl.touched;
+  }
+
   onSubmit(): void {
     console.log(this.userForm.controls['email'].value);
+    console.log(this.userForm.controls['contraseña'].value);
+    console.log(this.userForm.controls['age'].value);
 
     if (this.userForm.invalid) {
       alert('Completa todos los campos del formulario');
